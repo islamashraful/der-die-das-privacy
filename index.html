@@ -6,23 +6,100 @@
   <meta name="description" content="Privacy Policy for Der Die Das: Deutsch Lernen." />
   <title>Privacy Policy | Der Die Das</title>
   <link rel="icon" href="assets/icon.png" />
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (_error) {}
+    })();
+  </script>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
     }
 
     :root {
-      color-scheme: light;
+      color-scheme: light dark;
       --ink: #152033;
       --muted: #5b667a;
-      --paper: #ffffff;
+      --body-text: #303b4d;
+      --card-bg: rgba(255,255,255,0.94);
+      --summary-bg: #fbfcff;
       --line: #d9e2ee;
       --page: #f5f7fb;
       --green: #0f7b60;
       --green-soft: #dff7ec;
-      --red: #c83d42;
-      --gold: #c39a2f;
+      --badge-text: #07533e;
       --link: #1167b1;
+      --control-bg: #edf3fa;
+      --control-active-bg: #ffffff;
+      --control-text: #334155;
+      --shadow: 0 24px 70px rgba(21,32,51,0.11);
+      --icon-shadow: 0 14px 34px rgba(21,32,51,0.18);
+      --page-bg:
+        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,247,251,0.88)),
+        radial-gradient(circle at top left, rgba(15,123,96,0.16), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(200,61,66,0.12), transparent 28rem),
+        var(--page);
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --ink: #f6f1e8;
+      --muted: #b8b1a5;
+      --body-text: #ddd6c9;
+      --card-bg: rgba(31,30,27,0.95);
+      --summary-bg: #282620;
+      --line: #504b42;
+      --page: #151411;
+      --green: #64c796;
+      --green-soft: #173d30;
+      --badge-text: #d8f8e6;
+      --link: #8fd2ff;
+      --control-bg: #24221e;
+      --control-active-bg: #3a352d;
+      --control-text: #eee6d9;
+      --shadow: 0 24px 70px rgba(0,0,0,0.38);
+      --icon-shadow: 0 16px 38px rgba(0,0,0,0.45);
+      --page-bg:
+        linear-gradient(180deg, rgba(21,20,17,0.96), rgba(18,17,15,0.94)),
+        radial-gradient(circle at top left, rgba(100,199,150,0.16), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(200,61,66,0.12), transparent 28rem),
+        var(--page);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --ink: #f6f1e8;
+        --muted: #b8b1a5;
+        --body-text: #ddd6c9;
+        --card-bg: rgba(31,30,27,0.95);
+        --summary-bg: #282620;
+        --line: #504b42;
+        --page: #151411;
+        --green: #64c796;
+        --green-soft: #173d30;
+        --badge-text: #d8f8e6;
+        --link: #8fd2ff;
+        --control-bg: #24221e;
+        --control-active-bg: #3a352d;
+        --control-text: #eee6d9;
+        --shadow: 0 24px 70px rgba(0,0,0,0.38);
+        --icon-shadow: 0 16px 38px rgba(0,0,0,0.45);
+        --page-bg:
+          linear-gradient(180deg, rgba(21,20,17,0.96), rgba(18,17,15,0.94)),
+          radial-gradient(circle at top left, rgba(100,199,150,0.16), transparent 32rem),
+          radial-gradient(circle at bottom right, rgba(200,61,66,0.12), transparent 28rem),
+          var(--page);
+      }
     }
 
     body {
@@ -31,11 +108,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.7;
       color: var(--ink);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,247,251,0.88)),
-        radial-gradient(circle at top left, rgba(15,123,96,0.16), transparent 32rem),
-        radial-gradient(circle at bottom right, rgba(200,61,66,0.12), transparent 28rem),
-        var(--page);
+      background: var(--page-bg);
     }
 
     a {
@@ -52,7 +125,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto 1fr auto;
       gap: 18px;
       align-items: center;
       padding-bottom: 30px;
@@ -63,7 +136,7 @@
       width: 72px;
       height: 72px;
       border-radius: 8px;
-      box-shadow: 0 14px 34px rgba(21,32,51,0.18);
+      box-shadow: var(--icon-shadow);
     }
 
     .eyebrow {
@@ -77,7 +150,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: 3rem;
       line-height: 1.04;
       letter-spacing: 0;
     }
@@ -90,18 +163,53 @@
 
     .policy-card {
       margin-top: 28px;
-      background: rgba(255,255,255,0.94);
+      background: var(--card-bg);
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 24px 70px rgba(21,32,51,0.11);
+      box-shadow: var(--shadow);
       overflow: hidden;
+    }
+
+    .theme-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      justify-self: end;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--control-bg);
+    }
+
+    .theme-control button {
+      min-width: 74px;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: var(--control-text);
+      background: transparent;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .theme-control button[aria-pressed="true"] {
+      color: var(--ink);
+      background: var(--control-active-bg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+    }
+
+    .theme-control button:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
     }
 
     .summary {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border-bottom: 1px solid var(--line);
-      background: #fbfcff;
+      background: var(--summary-bg);
     }
 
     .summary-item {
@@ -138,7 +246,7 @@
       margin-bottom: 22px;
       border-radius: 8px;
       background: var(--green-soft);
-      color: #07533e;
+      color: var(--badge-text);
       padding: 8px 12px;
       font-size: 0.9rem;
       font-weight: 800;
@@ -154,7 +262,7 @@
 
     p {
       margin: 0 0 14px;
-      color: #303b4d;
+      color: var(--body-text);
     }
 
     section {
@@ -177,7 +285,7 @@
     ul {
       margin: 10px 0 0;
       padding-left: 1.3rem;
-      color: #303b4d;
+      color: var(--body-text);
     }
 
     li {
@@ -203,9 +311,22 @@
         grid-template-columns: 1fr;
       }
 
+      h1 {
+        font-size: 2.25rem;
+      }
+
       .app-icon {
         width: 64px;
         height: 64px;
+      }
+
+      .theme-control {
+        justify-self: stretch;
+        overflow-x: auto;
+      }
+
+      .theme-control button {
+        flex: 1;
       }
 
       .summary {
@@ -235,6 +356,11 @@
         <p class="eyebrow">Der Die Das: Deutsch Lernen</p>
         <h1>Privacy Policy</h1>
         <p class="subtitle">Last updated: April 18, 2026</p>
+      </div>
+      <div class="theme-control" role="group" aria-label="Color theme">
+        <button type="button" data-theme-option="system" aria-pressed="true">System</button>
+        <button type="button" data-theme-option="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
       </div>
     </header>
 
@@ -353,5 +479,51 @@
       </div>
     </article>
   </main>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll("[data-theme-option]");
+      var storageKey = "theme";
+
+      function getSavedTheme() {
+        try {
+          return localStorage.getItem(storageKey) || "system";
+        } catch (_error) {
+          return "system";
+        }
+      }
+
+      function saveTheme(theme) {
+        try {
+          if (theme === "system") {
+            localStorage.removeItem(storageKey);
+          } else {
+            localStorage.setItem(storageKey, theme);
+          }
+        } catch (_error) {}
+      }
+
+      function applyTheme(theme) {
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+        } else {
+          delete document.documentElement.dataset.theme;
+        }
+
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", String(button.dataset.themeOption === theme));
+        });
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var theme = button.dataset.themeOption || "system";
+          saveTheme(theme);
+          applyTheme(theme);
+        });
+      });
+
+      applyTheme(getSavedTheme());
+    })();
+  </script>
 </body>
 </html>

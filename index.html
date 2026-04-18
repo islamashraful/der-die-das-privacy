@@ -376,12 +376,12 @@
         </div>
         <div class="summary-item">
           <span class="summary-label">Analytics</span>
-          <span class="summary-value">Not used</span>
+          <span class="summary-value">Anonymous only</span>
         </div>
       </div>
 
       <div class="content">
-        <span class="badge">No personal data collected</span>
+        <span class="badge">No personal data — anonymous analytics only</span>
 
         <p id="privacy-policy-title">
           Your privacy is important to us. This policy explains what information
@@ -394,7 +394,12 @@
             <li>
               <strong>Anonymous device identifier</strong> - a randomly generated ID created on your device
               the first time you use the app. It is not linked to your name, email, or any other
-              personally identifiable information. It is used solely for AI rate-limiting.
+              personally identifiable information. It is used for AI rate-limiting and anonymous analytics.
+            </li>
+            <li>
+              <strong>Anonymous usage events</strong> - actions such as starting a review session, adding
+              a noun, or completing onboarding. These events are linked only to your anonymous device
+              identifier and are used to understand how the app is used so we can improve it.
             </li>
             <li>
               <strong>Learning content you create</strong> - German nouns, their articles, translations,
@@ -416,7 +421,6 @@
             <li>Location data</li>
             <li>Payment information</li>
             <li>Browsing history or cross-app tracking data</li>
-            <li>Crash reports or analytics (no third-party analytics SDK is used)</li>
           </ul>
         </section>
 
@@ -430,7 +434,16 @@
               openai.com/policies/privacy-policy
             </a>.
           </p>
-          <p>No other third-party services receive your data.</p>
+          <p>
+            The app uses <strong>PostHog</strong> for anonymous usage analytics. PostHog collects
+            anonymous event data (such as which features you use and how often) linked only to a
+            randomly generated device identifier — never to your name or personal information.
+            Your approximate country and city are derived from your IP address by PostHog on their
+            servers; the app does not read or store your location. PostHog's privacy policy:
+            <a href="https://posthog.com/privacy" target="_blank" rel="noopener">
+              posthog.com/privacy
+            </a>.
+          </p>
         </section>
 
         <section aria-labelledby="data-storage">

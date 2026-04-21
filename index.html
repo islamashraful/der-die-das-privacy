@@ -132,6 +132,21 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .app-store-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app-store-link:hover {
+      text-decoration: underline;
+    }
+
+    .app-store-link:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
     .app-icon {
       width: 72px;
       height: 72px;
@@ -351,9 +366,24 @@
 <body>
   <main class="page">
     <header class="hero">
-      <img class="app-icon" src="assets/icon.png" width="72" height="72" alt="Der Die Das app icon" />
+      <a
+        class="app-store-link"
+        href="https://apps.apple.com/de/app/der-die-das-deutsch-lernen/id6762269039?l=en-GB"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Der Die Das on the App Store"
+      >
+        <img class="app-icon" src="assets/icon.png" width="72" height="72" alt="Der Die Das app icon" />
+      </a>
       <div>
-        <p class="eyebrow">Der Die Das: Deutsch Lernen</p>
+        <p class="eyebrow">
+          <a
+            class="app-store-link"
+            href="https://apps.apple.com/de/app/der-die-das-deutsch-lernen/id6762269039?l=en-GB"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Der Die Das: Deutsch Lernen</a>
+        </p>
         <h1>Privacy Policy</h1>
         <p class="subtitle">Last updated: April 18, 2026</p>
       </div>
